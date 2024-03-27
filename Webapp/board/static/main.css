@@ -1,0 +1,87 @@
+/* body */
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* container centering */
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+/* dwf logo  */
+.logo {
+    font-size: 48px;
+    color: #f8f8f8;
+    text-shadow: 
+        2px 2px #ff4d4d,   
+        -2px -2px #4d9dff; 
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+
+/* box shadow */
+.box-shadow {
+    background-color: #f8f8f8;
+    box-shadow: 
+        2px 2px 0 1px #ff4d4d, 
+        -2px -2px 0 1px #4d9dff;
+    color: #333;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+
+
+/* an about section style */
+.about {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+/* footer style */
+footer {
+    background: linear-gradient(to right, #ff4d4d 0%, #4d9dff 100%);
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #333;
+}
+
+
+
+/* contact styles */
+.contact-info {
+    font-size: 20px;
+    color: #f8f8f8; 
+    margin-bottom: 10px;
+}
+
+/* icons styles */
+.profile-icon {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 10px; 
+    transition: transform 0.3s ease; 
+}
+
+.profile-icon:hover {
+    transform: scale(1.1);
+}
