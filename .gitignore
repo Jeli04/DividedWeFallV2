@@ -1,2 +1,4 @@
 Webapp/venv
 Webapp/board/__pycache__
+.env
+webscraping/__pycache__
