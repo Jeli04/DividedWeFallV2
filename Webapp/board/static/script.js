@@ -1,12 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("listening")
     // url listener
     //! come back to this
-    const analyzeButton = document.getElementById('analyzeButton');
-    if (analyzeButton) {
-        analyzeButton.addEventListener('click', function() {
-            const urlInput = document.getElementById('urlInput').value;
-            console.log('URL submitted:', urlInput);
-            
+    document.getElementById('analyzeButton').addEventListener('click', function() {
+        console.log('URL submitted:');
+        var url = document.getElementById("urlInput").value;
+        fetch('/inference', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({urlInput: url})
+        })
+        .then(data => {
+            document.getElementById("outputBox").innerText = data.result;
         });
-    }
+    });
 });
+
