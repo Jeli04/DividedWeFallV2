@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from newspaper import Article
 import os
+import requests
 
 def scrape_article(url):
     # newspaper3k
@@ -21,9 +22,9 @@ def scrape_article(url):
 
         return article_text
 
-url = "https://www.cnn.com/2024/03/25/middleeast/un-security-council-gaza-israel-ceasefire-intl/index.html"
 
-import requests
+
+# hugging face
 
 API_URL = "https://api-inference.huggingface.co/models/d4data/bias-detection-model"
 headers = {"Authorization": os.environ.get('HUGGING_FACE')}
