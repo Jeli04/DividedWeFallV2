@@ -84,3 +84,9 @@ footer {
 .profile-icon:hover {
     transform: scale(1.1);
 }
+
+.container #analyzeButton:active {
+    background-color: #cccccc;
+    color: #666666;
+    border: 1px solid #999999;
+}
