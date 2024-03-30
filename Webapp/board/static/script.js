@@ -1,3 +1,4 @@
+// Inside script.js
 document.addEventListener('DOMContentLoaded', function() {
     console.log("listening")
     // url listener
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify({urlInput: url})
         })
         .then(data => {
-            document.getElementById("outputBox").innerText = data.result;
+            document.getElementById('outputBox').textContent = 'Bias scores: ' + JSON.stringify(data.result);
         });
     });
 });
