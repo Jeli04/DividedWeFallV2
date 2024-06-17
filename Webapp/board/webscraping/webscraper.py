@@ -27,7 +27,7 @@ def scrape_article(url):
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../../../.env'))
 API_URL = "https://api-inference.huggingface.co/models/d4data/bias-detection-model"
-headers = {"Authorization": f"Bearer {os.getenv('HUGGING_FACE')}"}
+headers = {"Authorization": os.getenv('HUGGING_FACE')}
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
