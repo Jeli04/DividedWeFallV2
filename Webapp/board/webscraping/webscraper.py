@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from newspaper import Article
 import os
 import json
+from dotenv import load_dotenv
 
 def scrape_article(url):
     # newspaper3k
@@ -24,8 +25,9 @@ def scrape_article(url):
 
 # hugging face
 
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '../../../.env'))
 API_URL = "https://api-inference.huggingface.co/models/d4data/bias-detection-model"
-headers = {"Authorization": os.environ.get('HUGGING_FACE')}
+headers = {"Authorization": f"Bearer {os.getenv('HUGGING_FACE')}"}
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
@@ -35,6 +37,7 @@ def query(payload):
         return {"error": "Invalid JSON response"}
 
 def inference(url):
+    print(headers)
     raw_text = scrape_article(url).split()
     scores = [0, 0]
     count = 0
@@ -43,10 +46,10 @@ def inference(url):
         output = query({
             "inputs": " ".join(chunk),
         })
-        print(f"Chunk output: {output}")  # Debugging line to check the response structure
+        print(f"Chunk output: {output}")  # debugging line to check the response structure
         if 'error' in output:
             print(f"Error: {output['error']}")
-            return scores  # Return current scores if there's an error
+            return scores  # return current scores if there's an error
         if isinstance(output, list) and len(output) > 0:
             if 'score' in output[0]:
                 scores[0] += output[0]['score']
@@ -54,7 +57,7 @@ def inference(url):
                 scores[1] += output[1]['score']
         else:
             print(f"Unexpected output format: {output}")
-            return scores  # Return current scores if output format is unexpected
+            return scores  # return current scores if output format is unexpected
 
         raw_text = raw_text[len(chunk):]
         count += 1
