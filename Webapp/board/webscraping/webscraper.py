@@ -52,5 +52,7 @@ def inference(url):
 
     return scores
 
-# print(inference(url))
+url = "https://justinsnodgrass.com"
+print("test")
+print(inference(url))
 

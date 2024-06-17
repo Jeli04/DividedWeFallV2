@@ -12,10 +12,9 @@ def analyze():
     data = request.get_json()
     url = data['url']
 
-    # Call the inference function from your web scraper
     scores = inference(url)
 
-    # Return the bias scores as JSON
+    # return the bias scores as JSON
     return jsonify({"scores": scores})
 
 @app.route('/images/<filename>')
@@ -25,6 +24,7 @@ def serve_image(filename):
 @app.route('/inference', methods=['POST'])
 def inference():
     url = request.json['urlInput']
+    # BREAKS WHEN ASSIGNING VALUE TO RESULT
     result = utils.inference(url)
     app.logger.info("Results", result[0])
     return jsonify({'result1': str(result[0]), 'result2': str(result[1])})

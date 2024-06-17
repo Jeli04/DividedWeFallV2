@@ -11,16 +11,17 @@ Divided We Fall's current state is a web application available for public use. W
 Our team believes the current political state of the world is in shambles. The state of modern media has created immense political division. Today's 24/7 news channels and personalized social media streams not only affirm but also amplify our existing beliefs, deepening divisions and fostering bitterness toward differing viewpoints. We feel that having an unbiased model capable of showing you the potential bias in the media you consume is extremely important.
 
 ## How to use
-Clone the repo
-Add your hugging face key into the .env file
-python -m venv venv
-.\venv\Scripts\activate  # Activate your virtual environment on Windows
-pip install flask lxml_html_clean  # Install Flask and the required lxml package within the venv
-python .\__init__.py  # Run your Flask app
-pip3 install flask
-pip3 install requests
-pip3 install bs4
-pip3 install newspaper3k
+Clone the repo\
+Add your hugging face key into the .env file\
+python -m venv venv\
+.\venv\Scripts\activate  # Activate your virtual environment on Windows\
+pip install flask lxml_html_clean  # Install Flask and the required lxml package within the venv\
+pip install python-dotenv\
+pip3 install flask\
+pip3 install requests\
+pip3 install bs4\
+pip3 install newspaper3k\
+python .\Webapp\board\__init__.py  # Run your Flask app\
 
 Using our project is quite simple! Find a link, click, and view the bias scores! 
 
