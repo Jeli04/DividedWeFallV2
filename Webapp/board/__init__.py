@@ -24,16 +24,20 @@ def serve_image(filename):
 @app.route('/inference', methods=['POST'])
 def run_inference():
     data = request.get_json()
-    app.logger.info("Received data: %s", data)
     if not data or 'urlInput' not in data:
         app.logger.error("No URL provided or invalid data")
         return jsonify({"error": "No URL provided"}), 400
 
     url = data['urlInput']
     app.logger.info("Processing URL: %s", url)
-    result = utils.inference(url) 
-    
-    return jsonify(result)
+    try:
+        result = utils.inference(url)
+        app.logger.info("Processing successful")
+        app.logger.info("Non-biased: %s, Biased: %s", result["Non-biased"], result["Biased"])
+        return jsonify(result)
+    except Exception as e:
+        app.logger.error("Error processing URL: %s", e)
+        return jsonify({"error": str(e)}), 500
  
 if __name__=='__main__':
     app.run(port=8000, debug = True)

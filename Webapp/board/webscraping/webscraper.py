@@ -45,7 +45,6 @@ def inference(url):
         output = query({
             "inputs": " ".join(chunk),
         })
-        print(f"Outputs: {output}")  # debugging line to check the response structure
         if 'error' in output:
             print(f"Error: {output['error']}")
             return scores  # return current scores if there's an error
