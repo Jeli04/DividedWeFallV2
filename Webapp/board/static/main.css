@@ -25,7 +25,6 @@ body {
     margin-top: 20px;
 }
 
-
 /* box shadow */
 .box-shadow {
     background-color: #f8f8f8;
@@ -40,8 +39,23 @@ body {
     outline: none;
     box-sizing: border-box;
     border-radius: 10px;
+    text-align: center;
 }
 
+/* error message */
+.error-message {
+    color: #ff4d4d;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* output text */
+.output-text {
+    color: #ff4d4d;
+    font-size: 16px;
+    font-weight: bold;
+}
 
 /* an about section style */
 .about {
@@ -61,8 +75,6 @@ footer {
     border-top-right-radius: 20px;
     color: #333;
 }
-
-
 
 /* contact styles */
 .contact-info {
@@ -89,4 +101,9 @@ footer {
     background-color: #cccccc;
     color: #666666;
     border: 1px solid #999999;
+}
+
+/* Ensure input text alignment to the left */
+#urlInput {
+    text-align: left;
 }
