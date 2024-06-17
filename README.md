@@ -21,7 +21,7 @@ pip3 install flask\
 pip3 install requests\
 pip3 install bs4\
 pip3 install newspaper3k\
-python .\Webapp\board\__init__.py  # Run your Flask app\
+python .\Webapp\board\ __init__.py  # Run your Flask app\
 
 Using our project is quite simple! Find a link, click, and view the bias scores! 
 
