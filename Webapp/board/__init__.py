@@ -22,13 +22,18 @@ def serve_image(filename):
     return send_from_directory('Images', filename)
 
 @app.route('/inference', methods=['POST'])
-def inference():
-    url = request.json['urlInput']
-    # BREAKS WHEN ASSIGNING VALUE TO RESULT
-    result = utils.inference(url)
-    app.logger.info("Results", result[0])
-    return jsonify({'result1': str(result[0]), 'result2': str(result[1])})
+def run_inference():
+    data = request.get_json()
+    app.logger.info("Received data: %s", data)
+    if not data or 'urlInput' not in data:
+        app.logger.error("No URL provided or invalid data")
+        return jsonify({"error": "No URL provided"}), 400
 
+    url = data['urlInput']
+    app.logger.info("Processing URL: %s", url)
+    result = utils.inference(url) 
+    
+    return jsonify(result)
  
 if __name__=='__main__':
     app.run(port=8000, debug = True)

@@ -1,4 +1,3 @@
-// Inside script.js
 document.addEventListener('DOMContentLoaded', function() {
     console.log("listening")
     // url listener

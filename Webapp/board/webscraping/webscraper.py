@@ -37,24 +37,22 @@ def query(payload):
         return {"error": "Invalid JSON response"}
 
 def inference(url):
-    print(headers)
     raw_text = scrape_article(url).split()
-    scores = [0, 0]
+    scores = {"Non-biased": 0, "Biased": 0}
     count = 0
     while len(raw_text) > 0:
         chunk = raw_text[:min(len(raw_text), 250)]
         output = query({
             "inputs": " ".join(chunk),
         })
-        print(f"Chunk output: {output}")  # debugging line to check the response structure
+        print(f"Outputs: {output}")  # debugging line to check the response structure
         if 'error' in output:
             print(f"Error: {output['error']}")
             return scores  # return current scores if there's an error
-        if isinstance(output, list) and len(output) > 0:
-            if 'score' in output[0]:
-                scores[0] += output[0]['score']
-            if 'score' in output[1]:
-                scores[1] += output[1]['score']
+        if isinstance(output, list) and len(output) > 0 and isinstance(output[0], list):
+            for item in output[0]:
+                if item['label'] in scores:
+                    scores[item['label']] += item['score']
         else:
             print(f"Unexpected output format: {output}")
             return scores  # return current scores if output format is unexpected
@@ -62,13 +60,11 @@ def inference(url):
         raw_text = raw_text[len(chunk):]
         count += 1
 
-    print(count)
-
     if count > 0:
-        scores[0] = scores[0] / count
-        scores[1] = scores[1] / count
+        scores["Non-biased"] = scores["Non-biased"] / count
+        scores["Biased"] = scores["Biased"] / count
 
     return scores
 
-url = "https://www.cnn.com/"
-print(inference(url))
+# url = "https://www.cnn.com/"
+# print(inference(url))
